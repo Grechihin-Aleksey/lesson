@@ -13,21 +13,24 @@ let expenses2 = prompt("Введите еще одну обязательную 
 let amount1 = +prompt("Во сколько это обойдется?");
 let amount2 = +prompt("Еще вариант: во сколько это обойдется?");
 
-let getExpensesMonth = function (a, b) {
-  return a + b;
+let getExpensesMonth = function (amount1, amount2) {
+  return amount1 + amount2;
 };
+
 let amount3 = getExpensesMonth(amount1, amount2);
 
-let getAccumulatedMonth = function (c, d) {
-  return c - d;
+let getAccumulatedMonth = function (money, amount3) {
+  return money - amount3;
 };
+
 let accumulatedMonth = (money, amount3);
 
-let getTargetMonth = function (p, h) {
-  return p / h;
+let getTargetMonth = function (mission, accumulatedMonth) {
+  return mission / accumulatedMonth;
 };
 
 let mission2 = Math.ceil(getTargetMonth(mission, accumulatedMonth));
+
 let budgetDay = Math.floor(accumulatedMonth / 30);
 
 console.log("Расходы за месяц: " + amount3);
