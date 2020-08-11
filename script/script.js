@@ -1,33 +1,41 @@
 "use strict";
 
 let money = +prompt("Ваш месячный доход?");
-console.log(typeof money);
 let income = "Фриланс";
-//console.log(typeof income);
-//let addExpenses = "Интернет, Такси, Коммуналка";
 let addExpenses = prompt(
   "Перечислите возможные расходы за рассчитываемый период через запятую"
 );
-//console.log(addExpenses.length);
 let deposit = confirm("Есть ли у вас депозит в банке?");
-//console.log(typeof deposit);
 let mission = 100000;
 let period = 12;
-
 let expenses1 = prompt("Введите обязательную статью расходов?");
 let expenses2 = prompt("Введите еще одну обязательную статью расходов?");
 let amount1 = +prompt("Во сколько это обойдется?");
 let amount2 = +prompt("Еще вариант: во сколько это обойдется?");
 
-let budgetMonth = money - amount1 - amount2;
-let budgetDay = Math.floor(budgetMonth / 30);
-let mission2 = Math.ceil(mission / budgetMonth);
+let getExpensesMonth = function (a, b) {
+  return a + b;
+};
+let amount3 = getExpensesMonth(amount1, amount2);
 
+let getAccumulatedMonth = function (c, d) {
+  return c - d;
+};
+let accumulatedMonth = (money, amount3);
+
+let getTargetMonth = function (p, h) {
+  return p / h;
+};
+
+let mission2 = Math.ceil(getTargetMonth(mission, accumulatedMonth));
+let budgetDay = Math.floor(accumulatedMonth / 30);
+
+console.log("Расходы за месяц: " + amount3);
 console.log("Период равен " + period + " месяцев.");
 console.log("Цель заработать " + mission + " рублей.");
 console.log(addExpenses.toLowerCase().split(","));
 console.log("Доход в месяц: " + money);
-console.log("Бюджет на месяц: " + budgetMonth);
+console.log("Бюджет на месяц: " + accumulatedMonth);
 console.log("Бюджет в день: " + budgetDay);
 console.log("Цель будет достигнута за " + mission2 + " месяца.");
 
