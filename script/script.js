@@ -27,8 +27,6 @@ showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
 
-
-
 console.log(addExpenses.toLowerCase().split(","));
 
 let expenses = [];
@@ -38,10 +36,8 @@ let getExpensesMonth = function () {
 
   for (let i = 0; i < 2; i++) {
     expenses[i] = prompt("Введите обязательную статью расходов?");
-    sum += +prompt("Во сколько это обойдется?");
-    while (isNaN(sum)) {
-      sum += +prompt("Во сколько это обойдется?");
-    }
+    sum += prompt("Во сколько это обойдется?");
+    while (!isNamber(sum));
   }
 
   console.log(expenses);
