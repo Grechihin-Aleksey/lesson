@@ -1,6 +1,6 @@
 "use strict";
 
-let isNamber = function (n) {
+let isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
@@ -16,7 +16,7 @@ let period = 12;
 let start = function () {
   do {
     money = prompt("Ваш месячный доход?");
-  } while (!isNamber(money));
+  } while (!isNumber(money));
 };
 start();
 
@@ -36,8 +36,8 @@ let getExpensesMonth = function () {
 
   for (let i = 0; i < 2; i++) {
     expenses[i] = prompt("Введите обязательную статью расходов?");
-    sum += prompt("Во сколько это обойдется?");
-    while (!isNamber(sum));
+    sum += +prompt("Во сколько это обойдется?");
+    while (!isNumber(sum));
   }
 
   console.log(expenses);
