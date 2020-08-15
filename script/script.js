@@ -3,7 +3,7 @@
 let isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
-
+let getExpensesMonth;
 let money;
 let start = function () {
   do {
@@ -24,19 +24,7 @@ let appData = {
   budgetDay: 0,
   budgetMonth: 0,
   expensesMonth: 0,
-  getExpensesMonth: function () {
-    let sum = 0;
-    let ans;
-    for (let i = 0; i < 2; i++) {
-      expenses[i] = prompt("Введите обязательную статью расходов?");
-      do {
-        ans = prompt("Во сколько это обойдется?");
-      } while (!isNumber(ans));
-      sum = sum + +ans;
-      appData.expenses.expenses = ans;
-    }
-    return sum;
-  },
+
   getAccumulatedMonth: function () {
     return money - expensesAmount;
   },
@@ -55,7 +43,20 @@ let appData = {
       console.log("Что-то пошло не так.");
     }
   },
-  asking: function () {
+  asking: (getExpensesMonth = function () {
+    let sum = 0;
+    let ans;
+    for (let i = 0; i < 2; i++) {
+      expenses = prompt("Введите обязательную статью расходов?");
+      do {
+        ans = prompt("Во сколько это обойдется?");
+      } while (!isNumber(ans));
+      sum = sum + +ans;
+      appData.expenses[expenses] = ans;
+    }
+    return sum;
+  }),
+  function() {
     let addExpenses = prompt(
       "Перечислите возможные расходы за рассчитываемый период через запятую"
     );
