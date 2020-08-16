@@ -21,9 +21,7 @@ let appData = {
   mission: 100000,
   period: 3,
   budget: money,
-  budgetDay: function () {
-    return Math.floor(appData.getBudget / 30);
-  },
+  budgetDay: 0,
   budgetMonth: 0,
   expensesMonth: 0,
   getExpensesMonth: function () {
@@ -36,7 +34,8 @@ let appData = {
   },
 
   getBudget: function () {
-    return appData.budget - appData.expensesMonth;
+    appData.budgetMonth = appData.budget - appData.expensesMonth;
+    appData.budgetDay = Math.floor(appData.budgetMonth / 30);
   },
   getTargetMonth: function () {
     appData.budgetMonth = appData.getTargetMonth;
@@ -78,7 +77,7 @@ appData.asking();
 console.log(appData);
 appData.getExpensesMonth();
 appData.getTargetMonth();
-appData.budgetDay();
+
 if (appData.getTargetMonth() > 0) {
   console.log(
     "Цель будет достигнута за " + appData.getTargetMonth() + " месяца."
@@ -89,8 +88,8 @@ if (appData.getTargetMonth() > 0) {
 
 console.log("Расходы за месяц: " + appData.expensesMonth);
 console.log("Период равен " + appData.period + " месяцев.");
-console.log("Цель заработать " + appData.mission + " рублей.");
-console.log("Доход в месяц: " + money);
-console.log("Бюджет на месяц: " + appData.getBudget());
-
 console.log(appData.getStatusIncome());
+
+for (let key in appData) {
+  console.log("Наша программа включает в себя данные: " + key, appData[key]);
+}
