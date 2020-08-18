@@ -64,7 +64,11 @@ let appData = {
       let cashIcome;
       do {
         ItemIcome = prompt("Какой у Вас дополнительный заработок?", "Таксую");
-      } while (isNumber(ItemIcome));
+      } while (
+        !isNaN(ItemIcome) ||
+        ItemIcome.trim === " " ||
+        ItemIcome === null
+      );
       do {
         cashIcome = prompt(
           "Сколько в месяц Вы на этом зарабатываете?",
@@ -127,8 +131,8 @@ console.log("Расходы за месяц: " + appData.expensesMonth);
 console.log("Период равен " + appData.period + " месяцев.");
 console.log(appData.getStatusIncome());
 
-/*for (let key in appData) {
-  console.log("Наша программа включает в себя данные: " + key, appData[key]);*/
+for (let key in appData) {
+  console.log("Наша программа включает в себя данные: " + key, appData[key]);
 }
 let res = "";
 for (let item of appData.addExpenses) {
