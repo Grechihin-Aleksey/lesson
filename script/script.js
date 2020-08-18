@@ -127,8 +127,8 @@ console.log("Расходы за месяц: " + appData.expensesMonth);
 console.log("Период равен " + appData.period + " месяцев.");
 console.log(appData.getStatusIncome());
 
-for (let key in appData) {
-  console.log("Наша программа включает в себя данные: " + key, appData[key]);
+/*for (let key in appData) {
+  console.log("Наша программа включает в себя данные: " + key, appData[key]);*/
 }
 let res = "";
 for (let item of appData.addExpenses) {
